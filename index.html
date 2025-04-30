@@ -1,20 +1,80 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Color Scheme Generator</title>
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
-        <header class="primary-header">
-            <a href="index.html" class="logo">Color Scheme Generator</a>
-        </header>
-        <main>
-        </main>
-        <footer>
-            <span>Made by <a href="https://github.com/hello-rain" target="_blank">Rain</a></span>
-        </footer>
-        <script src="js/script.js" type="module"></script>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Scheme Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="primary-header">
+      <a href="index.html" class="logo">Color Scheme Generator</a>
+    </header>
+    <main>
+      <form id="color-scheme-generator">
+        <label for="color" class="sr-only">Pick a base color: </label>
+        <input
+          type="color"
+          id="color"
+          class="color-picker"
+          name="color"
+          value="#F55A5A"
+          required
+        />
+        <label for="color-scheme" class="sr-only">Select a color scheme:</label>
+        <select
+          id="color-scheme"
+          class="color-scheme"
+          name="color-scheme"
+          required
+        >
+          <option value="monochrome" selected>Monochrome</option>
+          <option value="monochrome-dark">Monochrome-dark</option>
+          <option value="monochrome-light">Monochrome-light</option>
+          <option value="analogic">Analogic</option>
+          <option value="complement">Complement</option>
+          <option value="analogic-complement">Analogic-complement</option>
+          <option value="triad">Triad</option>
+        </select>
+        <button type="submit" id="get-color-scheme" class="btn">
+          Get color scheme
+        </button>
+      </form>
+      <div class="color-scheme-output">
+        <div class="color-wrapper">
+          <div class="color-block" style="background-color: #f55a5a"></div>
+          <span class="color-code">#F55A5A</span>
+        </div>
+        <div class="color-wrapper">
+          <div class="color-block" style="background-color: #2b283a"></div>
+          <span class="color-code">#2B283A</span>
+        </div>
+        <div class="color-wrapper">
+          <div class="color-block" style="background-color: #fbf3ab"></div>
+          <span class="color-code">#FBF3AB</span>
+        </div>
+        <div class="color-wrapper">
+          <div class="color-block" style="background-color: #aad1b6"></div>
+          <span class="color-code">#AAD1B6</span>
+        </div>
+        <div class="color-wrapper">
+          <div class="color-block" style="background-color: #a626d3"></div>
+          <span class="color-code">#A626D3</span>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <span
+        >Made by
+        <a href="https://github.com/hello-rain" target="_blank">Rain</a></span
+      >
+    </footer>
+    <script src="js/script.js" type="module"></script>
+  </body>
 </html>
