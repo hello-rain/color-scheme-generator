@@ -11,3 +11,7 @@
   padding: 0;
   font: inherit;
 }
+
+a {
+  text-decoration: none;
+}
