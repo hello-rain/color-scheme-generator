@@ -17,55 +17,57 @@
       <a href="index.html" class="logo">Color Scheme Generator</a>
     </header>
     <main>
-      <form id="color-scheme-generator">
-        <label for="color" class="sr-only">Pick a base color: </label>
-        <input
-          type="color"
-          id="color"
-          class="color-picker"
-          name="color"
-          value="#F55A5A"
-          required
-        />
-        <label for="color-scheme" class="sr-only">Select a color scheme:</label>
-        <select
-          id="color-scheme"
-          class="color-scheme"
-          name="color-scheme"
-          required
-        >
-          <option value="monochrome" selected>Monochrome</option>
-          <option value="monochrome-dark">Monochrome-dark</option>
-          <option value="monochrome-light">Monochrome-light</option>
-          <option value="analogic">Analogic</option>
-          <option value="complement">Complement</option>
-          <option value="analogic-complement">Analogic-complement</option>
-          <option value="triad">Triad</option>
-        </select>
-        <button type="submit" id="get-color-scheme" class="btn">
-          Get color scheme
-        </button>
-      </form>
-      <div class="color-scheme-output">
-        <div class="color-wrapper">
-          <div class="color-block" style="background-color: #f55a5a"></div>
-          <span class="color-code">#F55A5A</span>
-        </div>
-        <div class="color-wrapper">
-          <div class="color-block" style="background-color: #2b283a"></div>
-          <span class="color-code">#2B283A</span>
-        </div>
-        <div class="color-wrapper">
-          <div class="color-block" style="background-color: #fbf3ab"></div>
-          <span class="color-code">#FBF3AB</span>
-        </div>
-        <div class="color-wrapper">
-          <div class="color-block" style="background-color: #aad1b6"></div>
-          <span class="color-code">#AAD1B6</span>
-        </div>
-        <div class="color-wrapper">
-          <div class="color-block" style="background-color: #a626d3"></div>
-          <span class="color-code">#A626D3</span>
+      <div class="container">
+        <form id="color-scheme-generator" class="color-scheme-generator">
+          <label for="color" class="sr-only">Pick a base color: </label>
+          <input
+            type="color"
+            id="color"
+            class="color-picker"
+            name="color"
+            value="#F55A5A"
+            required
+          />
+          <label for="color-scheme" class="sr-only">Select a color scheme:</label>
+          <select
+            id="color-scheme"
+            class="color-scheme"
+            name="color-scheme"
+            required
+          >
+            <option value="monochrome" selected>Monochrome</option>
+            <option value="monochrome-dark">Monochrome-dark</option>
+            <option value="monochrome-light">Monochrome-light</option>
+            <option value="analogic">Analogic</option>
+            <option value="complement">Complement</option>
+            <option value="analogic-complement">Analogic-complement</option>
+            <option value="triad">Triad</option>
+          </select>
+          <button type="submit" id="get-color-scheme" class="btn">
+            Get color scheme
+          </button>
+        </form>
+        <div class="color-scheme-output">
+          <div class="color-wrapper">
+            <div class="color-block" style="background-color: #f55a5a"></div>
+            <span class="color-code">#F55A5A</span>
+          </div>
+          <div class="color-wrapper">
+            <div class="color-block" style="background-color: #2b283a"></div>
+            <span class="color-code">#2B283A</span>
+          </div>
+          <div class="color-wrapper">
+            <div class="color-block" style="background-color: #fbf3ab"></div>
+            <span class="color-code">#FBF3AB</span>
+          </div>
+          <div class="color-wrapper">
+            <div class="color-block" style="background-color: #aad1b6"></div>
+            <span class="color-code">#AAD1B6</span>
+          </div>
+          <div class="color-wrapper">
+            <div class="color-block" style="background-color: #a626d3"></div>
+            <span class="color-code">#A626D3</span>
+          </div>
         </div>
       </div>
     </main>
