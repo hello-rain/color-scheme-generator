@@ -17,6 +17,16 @@ a {
 }
 
 body {
-  font-family: "Inter", sans-serif;;
+  font-family: "Inter", sans-serif;
 }
 
+.primary-header {
+  padding: 1em;
+  background-color: hsl(300, 59%, 94%);
+  text-align: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  color: hsl(0, 0%, 0%);
+}
