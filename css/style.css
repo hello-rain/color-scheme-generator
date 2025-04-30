@@ -1,3 +1,4 @@
+/* Reset */
 *,
 ::before,
 ::after {
@@ -14,10 +15,12 @@ a {
   text-decoration: none;
 }
 
+/* General Styles */
 body {
   font-family: "Inter", sans-serif;
 }
 
+/* Header */
 .primary-header {
   padding: 1em;
   background-color: hsl(300, 59%, 94%);
@@ -29,6 +32,16 @@ body {
   color: hsl(0, 0%, 0%);
 }
 
+/* Main */
+main {
+  padding: 2em;
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Utility Classes */
 .sr-only {
   position: absolute;
   width: 1px;
