@@ -1,14 +1,17 @@
 // Future functions can go here
 function init() {
-  const color = document.querySelector("#color").value.slice(1);
+  // Remove # from the color code to format it for the API request
+  const seedColor = document.querySelector("#seed-color").value.slice(1);
   const schemeMode = document.querySelector("#scheme-mode").value;
 
-  console.log(color, schemeMode);
-  fetchColorScheme(color, schemeMode);
+  console.log(seedColor, schemeMode);
+  fetchColorScheme(seedColor, schemeMode);
 }
 
-function fetchColorScheme(color, schemeMode) {
-  fetch(`https://www.thecolorapi.com/scheme?hex=${color}&mode=${schemeMode}`)
+function fetchColorScheme(seedColor, schemeMode) {
+  fetch(
+    `https://www.thecolorapi.com/scheme?hex=${seedColor}&mode=${schemeMode}`
+  )
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -40,6 +43,25 @@ function renderColorScheme(colors) {
     colorCode.classList.add("color-code");
     colorCode.textContent = color.hex.value;
 
+    // Add event listener to copy color code to clipboard
+    [colorBlock, colorCode].forEach((element) => {
+      element.addEventListener("click", () => {
+        navigator.clipboard.writeText(colorCode.textContent).then(() => {
+          // Temporarily change the content to "Copied!"
+          const originalText = colorCode.textContent;
+          const originalColor = colorCode.style.color;
+
+          colorCode.textContent = "Copied!";
+          colorCode.classList.add("copied");
+
+          setTimeout(() => {
+            colorCode.textContent = originalText; // Revert text
+            colorCode.classList.remove("copied"); // Revert color
+          }, 500);
+        });
+      });
+    });
+
     colorWrapper.append(colorBlock, colorCode);
     outputContainer.appendChild(colorWrapper);
   });
@@ -57,10 +79,3 @@ document.addEventListener("DOMContentLoaded", () => {
       init();
     });
 });
-
-// 0. When get color scheme button is clicked, generate color scheme.
-// 1. Prevent default form submission
-// 2. Select color and color scheme values
-// 3. Make an API call to Colors API
-// 4. Render UI with generated color scheme and their hex values
-// 5. Stretch goal: click hex values to copy to clipboard

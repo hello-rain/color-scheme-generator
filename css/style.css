@@ -170,3 +170,7 @@ footer {
   white-space: nowrap;
   border: 0;
 }
+
+.copied {
+  color: hsl(225, 73%, 57%);
+}
