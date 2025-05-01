@@ -120,9 +120,9 @@ footer {
 .container {
   display: flex;
   flex-direction: column;
-  height: 80%;
+  height: 60%;
   width: 95%;
-  max-width: 600px;
+  max-width: 800px;
   margin: 2em 0;
   border: 1px solid hsl(0, 0%, 78%);
   border-radius: 3px;
