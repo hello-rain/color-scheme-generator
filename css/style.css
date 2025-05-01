@@ -65,12 +65,12 @@ main {
   gap: 0.8em;
 }
 
-.color-picker {
+.seed-color {
   width: 45px;
 }
 
 .color-scheme-generator,
-.color-picker,
+.seed-color,
 .scheme-mode,
 .btn,
 .container {
@@ -78,9 +78,9 @@ main {
   border-radius: 3px;
 }
 
-.color-picker:hover,
-.color-picker:focus,
-.color-picker:active,
+.seed-color:hover,
+.seed-color:focus,
+.seed-color:active,
 .scheme-mode:hover,
 .scheme-mode:focus,
 .scheme-mode:active,
@@ -112,7 +112,7 @@ main {
 }
 
 .color-wrapper,
-.color-picker {
+.seed-color {
   height: 100%;
 }
 
@@ -140,12 +140,8 @@ main {
 
 .color-code {
   padding: 1em 0;
-  cursor: pointer;
-}
-
-.color-code:active {
-  color: hsl(225, 73%, 57%);
   transition: color 0.2s ease;
+  cursor: pointer;
 }
 
 /* Footer */
