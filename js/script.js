@@ -1,10 +1,28 @@
 // Future functions can go here
 function init() {
-  const color = document.querySelector("#color").value;
+  const color = document.querySelector("#color").value.slice(1);
   const schemeMode = document.querySelector("#scheme-mode").value;
 
   console.log(color, schemeMode);
   fetchColorScheme(color, schemeMode);
+}
+
+function fetchColorScheme(color, schemeMode) {
+  fetch(`https://www.thecolorapi.com/scheme?hex=${color}&mode=${schemeMode}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log("Success:", data);
+      console.log(data.colors)
+      renderColorScheme(data.colors)
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
