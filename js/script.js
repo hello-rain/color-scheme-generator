@@ -17,12 +17,32 @@ function fetchColorScheme(color, schemeMode) {
     })
     .then((data) => {
       console.log("Success:", data);
-      console.log(data.colors)
-      renderColorScheme(data.colors)
+      renderColorScheme(data.colors);
     })
     .catch((error) => {
       console.error("Error:", error);
     });
+}
+
+function renderColorScheme(colors) {
+  const outputContainer = document.querySelector("#color-scheme-output");
+  outputContainer.innerHTML = "";
+
+  colors.forEach((color) => {
+    const colorWrapper = document.createElement("div");
+    colorWrapper.classList.add("color-wrapper");
+
+    const colorBlock = document.createElement("div");
+    colorBlock.classList.add("color-block");
+    colorBlock.style.backgroundColor = color.hex.value;
+
+    const colorCode = document.createElement("span");
+    colorCode.classList.add("color-code");
+    colorCode.textContent = color.hex.value;
+
+    colorWrapper.append(colorBlock, colorCode);
+    outputContainer.appendChild(colorWrapper);
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -44,14 +64,3 @@ document.addEventListener("DOMContentLoaded", () => {
 // 3. Make an API call to Colors API
 // 4. Render UI with generated color scheme and their hex values
 // 5. Stretch goal: click hex values to copy to clipboard
-
-// 1. Choose "seed color" with an ‹input
-// type="color" />
-// 2. Choose color scheme mode in a
-// < select> box
-// 3. Clicking button makes request to the
-// Color API to get a color scheme
-// 4. Display the scheme colors and hex
-// values on the page
-// 5. Stretch goal: click hex values to copy
-// to clipboard
