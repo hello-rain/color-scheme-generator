@@ -39,7 +39,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 80%;
+  height: 90%;
   padding-top: 2em;
 }
 
@@ -101,7 +101,7 @@ main {
 .container {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 80%;
   width: 95%;
   max-width: 600px;
   margin: 2em 0;
@@ -120,3 +120,4 @@ main {
   white-space: nowrap;
   border: 0;
 }
+
