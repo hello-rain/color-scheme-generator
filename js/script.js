@@ -1,4 +1,27 @@
-// Future functions can go here
+// Copy text to clipboard and provide feedback
+function copyToClipboard(element) {
+  navigator.clipboard
+    .writeText(element.textContent)
+    .then(() => {
+      // Temporarily change the content to "Copied!"
+      const originalText = element.textContent;
+      const originalColor = element.style.color;
+
+      element.textContent = "Copied!";
+      element.classList.add("copied");
+
+      setTimeout(() => {
+        element.textContent = originalText; // Revert text
+        element.classList.remove("copied"); // Revert color
+      }, 500);
+    })
+    .catch((error) => {
+      console.error("Failed to copy text:", error);
+      alert("Failed to copy text. Please try again.");
+    });
+}
+
+// Initialize the app by fetching the color scheme
 function init() {
   // Remove # from the color code to format it for the API request
   const seedColor = document.querySelector("#seed-color").value.slice(1);
@@ -8,6 +31,7 @@ function init() {
   fetchColorScheme(seedColor, schemeMode);
 }
 
+// Fetch color scheme from the Colors API
 function fetchColorScheme(seedColor, schemeMode) {
   fetch(
     `https://www.thecolorapi.com/scheme?hex=${seedColor}&mode=${schemeMode}`
@@ -27,25 +51,7 @@ function fetchColorScheme(seedColor, schemeMode) {
     });
 }
 
-function copyToClipboard(element) {
-  navigator.clipboard.writeText(element.textContent).then(() => {
-    // Temporarily change the content to "Copied!"
-    const originalText = element.textContent;
-    const originalColor = element.style.color;
-
-    element.textContent = "Copied!";
-    element.classList.add("copied");
-
-    setTimeout(() => {
-      element.textContent = originalText; // Revert text
-      element.classList.remove("copied"); // Revert color
-    }, 500).catch((error) => {
-      console.error("Failed to copy text:", error);
-      alert("Failed to copy text. Please try again.");
-    });
-  });
-}
-
+// Render the color scheme dynamically
 function renderColorScheme(colors) {
   const outputContainer = document.querySelector("#color-scheme-output");
   outputContainer.innerHTML = "";
@@ -72,15 +78,19 @@ function renderColorScheme(colors) {
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Trigger the color scheme generation on page load
-  init();
-
-  // Add event listener for form submission
+function setupEventListeners() {
   document
     .querySelector("#color-scheme-generator")
     .addEventListener("submit", (e) => {
       e.preventDefault();
       init();
     });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Trigger the color scheme generation on page load
+  init();
+
+  // Trigger the color scheme generation on form submission
+  setupEventListeners();
 });
