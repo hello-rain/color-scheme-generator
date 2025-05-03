@@ -27,6 +27,25 @@ function fetchColorScheme(seedColor, schemeMode) {
     });
 }
 
+function copyToClipboard(element) {
+  navigator.clipboard.writeText(element.textContent).then(() => {
+    // Temporarily change the content to "Copied!"
+    const originalText = element.textContent;
+    const originalColor = element.style.color;
+
+    element.textContent = "Copied!";
+    element.classList.add("copied");
+
+    setTimeout(() => {
+      element.textContent = originalText; // Revert text
+      element.classList.remove("copied"); // Revert color
+    }, 500).catch((error) => {
+      console.error("Failed to copy text:", error);
+      alert("Failed to copy text. Please try again.");
+    });
+  });
+}
+
 function renderColorScheme(colors) {
   const outputContainer = document.querySelector("#color-scheme-output");
   outputContainer.innerHTML = "";
@@ -43,23 +62,9 @@ function renderColorScheme(colors) {
     colorCode.classList.add("color-code");
     colorCode.textContent = color.hex.value;
 
-    // Add event listener to copy color code to clipboard
+    // Add event listeners to copy color code to clipboard
     [colorBlock, colorCode].forEach((element) => {
-      element.addEventListener("click", () => {
-        navigator.clipboard.writeText(colorCode.textContent).then(() => {
-          // Temporarily change the content to "Copied!"
-          const originalText = colorCode.textContent;
-          const originalColor = colorCode.style.color;
-
-          colorCode.textContent = "Copied!";
-          colorCode.classList.add("copied");
-
-          setTimeout(() => {
-            colorCode.textContent = originalText; // Revert text
-            colorCode.classList.remove("copied"); // Revert color
-          }, 500);
-        });
-      });
+      element.addEventListener("click", () => copyToClipboard(colorCode));
     });
 
     colorWrapper.append(colorBlock, colorCode);
