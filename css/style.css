@@ -1,3 +1,15 @@
+/* Variables */
+:root {
+  --primary-color: hsl(300, 59%, 94%);
+  --btn-color: hsl(0, 0%, 100%);
+  --copied-color: hsl(225, 73%, 57%);
+  --border-color: hsl(0, 3%, 79%);
+  --hover-color: hsl(0, 8%, 88%);
+  --transition-duration: 0.2s;
+  --seed-color-height: 3em;
+  --seed-color-max-width: 6em;
+}
+
 /* Reset */
 *,
 ::before,
@@ -29,8 +41,8 @@ footer {
   z-index: 1000;
   width: 100%;
   padding: 1em 0;
-  background-color: hsl(300, 59%, 94%);
-  font-size: 1.5rem;
+  background-color: var(--primary-color);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
 }
 
 /* Header */
@@ -49,24 +61,7 @@ main {
   align-items: center;
   justify-content: center;
   height: 90%;
-  padding-top: 2em;
-}
-
-.color-scheme-generator,
-.btn {
-  padding: 1em;
-}
-
-.color-scheme-generator {
-  flex-shrink: 0;
-  max-height: 70px;
-  display: flex;
-  justify-content: space-between;
-  gap: 0.8em;
-}
-
-.seed-color {
-  width: 45px;
+  padding-top: 4em;
 }
 
 .color-scheme-generator,
@@ -74,41 +69,67 @@ main {
 .scheme-mode,
 .btn,
 .container {
-  border: 1px solid hsl(0, 3%, 79%);
-  border-radius: 3px;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
 }
 
-.seed-color:hover,
-.seed-color:focus,
-.seed-color:active,
-.scheme-mode:hover,
-.scheme-mode:focus,
-.scheme-mode:active,
-.btn:hover,
-.btn:focus,
-.btn:active {
-  background-color: hsl(0, 8%, 88%);
+.seed-color,
+.scheme-mode,
+.btn {
+  width: 100%;
   cursor: pointer;
 }
 
+.seed-color,
+.scheme-mode,
+.btn,
+.container {
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+}
+
+.color-scheme-generator {
+  height: 200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+}
+
+.seed-color {
+  height: var(--seed-color-height);
+}
+
 .scheme-mode {
-  padding: 0.5em;
-  min-width: 80px;
-  width: 50%;
+  padding-left: 0.5em;
+}
+
+.scheme-mode,
+.btn {
+  padding: 1em;
 }
 
 .btn {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: fit-content;
-  background-color: hsl(0, 0%, 100%);
+  background-color: var(--btn-color);
+}
+
+/* Hover and active states */
+.seed-color:hover,
+.seed-color:active,
+.scheme-mode:hover,
+.scheme-mode:active,
+.btn:hover,
+.btn:active {
+  background-color: var(--hover-color);
 }
 
 .color-scheme-output {
   flex-grow: 1;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  padding: 1em 0;
 }
 
 .color-wrapper,
@@ -121,16 +142,20 @@ main {
   flex-direction: column;
 }
 
+.color-block,
+.color-code {
+  cursor: pointer;
+}
+
 .color-block {
   height: 95%;
+  transition: all var(--transition-duration);
 }
 
 .color-block:hover,
 .color-block:focus {
   box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.4);
   transform: scale(1.02);
-  transition: all 0.2s ease;
-  cursor: pointer;
 }
 
 .color-block:active,
@@ -139,9 +164,8 @@ main {
 }
 
 .color-code {
-  padding: 1em 0;
-  transition: color 0.2s ease;
-  cursor: pointer;
+  padding-top: 1em;
+  transition: color var(--transition-duration);
 }
 
 /* Footer */
@@ -153,10 +177,10 @@ footer {
 .container {
   display: flex;
   flex-direction: column;
-  height: 60%;
+  height: 80%;
   width: 95%;
   max-width: 1000px;
-  margin: 2em 0;
+  padding: 0.5em;
 }
 
 .sr-only {
@@ -173,4 +197,23 @@ footer {
 
 .copied {
   color: hsl(225, 73%, 57%);
+}
+
+/* Media Queries */
+
+@media (min-width: 768px) {
+  .color-scheme-generator {
+    flex-direction: row;
+    height: fit-content;
+  }
+  .seed-color {
+    max-width: var(--seed-color-max-width);
+  }
+  .scheme-mode {
+    width: 60%;
+  }
+
+  .btn {
+    width: 40%;
+  }
 }
